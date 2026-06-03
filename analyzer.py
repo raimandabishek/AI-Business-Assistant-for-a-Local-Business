@@ -1,7 +1,8 @@
+import os
 from groq import Groq
 
 client = Groq(
-    api_key="YOUR_GROQ_API_KEY"
+    api_key=os.getenv("GROQ_API_KEY")
 )
 
 def analyze_business(website_content, reviews, competitor_url):

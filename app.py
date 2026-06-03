@@ -7,9 +7,12 @@ st.title("AI Business Assistant")
 
 website_url = st.text_input("Business Website URL")
 
-reviews = st.text_area("Paste Google Reviews")
+reviews = st.text_area("Business Google Reviews")
+
+competitor_reviews = st.text_area("Competitor Google Reviews")
 
 competitor_url = st.text_input("Competitor Website URL")
+
 
 if st.button("Analyze"):
 
