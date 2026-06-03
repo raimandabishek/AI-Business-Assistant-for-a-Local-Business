@@ -1,5 +1,8 @@
 import streamlit as st
 
+from scraper import get_website_content
+from analyzer import analyze_business
+
 st.title("AI Business Assistant")
 
 website_url = st.text_input("Business Website URL")
@@ -9,8 +12,17 @@ reviews = st.text_area("Paste Google Reviews")
 competitor_url = st.text_input("Competitor Website URL")
 
 if st.button("Analyze"):
-    st.success("Data Received!")
-    
-    st.write("Website:", website_url)
-    st.write("Competitor:", competitor_url)
-    st.write("Reviews:", reviews)
+
+    with st.spinner("Analyzing..."):
+
+        website_content = get_website_content(website_url)
+
+        result = analyze_business(
+            website_content,
+            reviews,
+            competitor_url
+        )
+
+        st.subheader("Business Analysis Report")
+
+        st.markdown(result)
